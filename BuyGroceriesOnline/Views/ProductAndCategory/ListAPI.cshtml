@@ -4,10 +4,11 @@
     ViewData["Title"] = "ListAPI";
 }
 
-@*<h1>List</h1>*@
+<br>
 
 <h1>@Model.CurrentCategory</h1>
 <h3>@Model.CategoryDescription</h3>
+<hr/>
 @if(Context.Session.GetString("manager")=="1")
 {
     <p>
@@ -22,7 +23,7 @@
 @foreach (var product in Model.Products)
 {
     <div class="col">
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 18rem; padding:20px;">
         <div class="thumbnail">
             <img src="@product.ImageThumbnailUrl" alt="" class="card-img-top embed-responsive-item">
             <div class="caption">

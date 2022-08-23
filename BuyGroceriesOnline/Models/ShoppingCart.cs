@@ -7,6 +7,7 @@ namespace BuyGroceriesOnline.Models
     {
         private readonly AppDbContext _appDbContext;
         public string ShoppingCartId { get; set; }
+        public static decimal DiscountAmt { get; set; }
         public List<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         private ShoppingCart(AppDbContext appDbContext)
@@ -60,7 +61,7 @@ namespace BuyGroceriesOnline.Models
             {
                 shoppingCartItem.Amount++;
             }
-            _appDbContext.SaveChanges();           
+            _appDbContext.SaveChanges();
 
         }
         public int RemoveFromCart(Product product)
@@ -125,7 +126,10 @@ namespace BuyGroceriesOnline.Models
         {
             var total = _appDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
                 .Select(c => c.Product.Price * c.Amount).Sum();
-            return Math.Round(total , 2);
+
+            var NewTotal = total - (total*DiscountAmt/100);
+
+            return Math.Round(NewTotal , 2);
         }
 
 

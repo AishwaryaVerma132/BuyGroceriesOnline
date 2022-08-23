@@ -12,13 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BuyGroceriesOnline.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-<<<<<<<< HEAD:BuyGroceriesOnline/Migrations/20220822115608_InitialMigration.Designer.cs
-    [Migration("20220822115608_InitialMigration")]
+    [Migration("20220823052245_InitialMigration")]
     partial class InitialMigration
-========
-    [Migration("20220822132259_seedmoredata")]
-    partial class seedmoredata
->>>>>>>> 24730c53ce2a223d76b602cb92c25b2cb04b444f:BuyGroceriesOnline/Migrations/20220822132259_seedmoredata.Designer.cs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -92,6 +87,26 @@ namespace BuyGroceriesOnline.Migrations
                             CategoryName = "Beauty & Makeup",
                             Description = "These include vitamins A (beta-carotene), C and E, magnesium, zinc, phosphorous and folic acid."
                         });
+                });
+
+            modelBuilder.Entity("BuyGroceriesOnline.Models.Coupon", b =>
+                {
+                    b.Property<int>("CouponId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CouponId"), 1L, 1);
+
+                    b.Property<string>("CouponName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Discount")
+                        .HasColumnType("int");
+
+                    b.HasKey("CouponId");
+
+                    b.ToTable("Coupons");
                 });
 
             modelBuilder.Entity("BuyGroceriesOnline.Models.Feedback", b =>
@@ -168,6 +183,9 @@ namespace BuyGroceriesOnline.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int?>("CouponId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -205,6 +223,8 @@ namespace BuyGroceriesOnline.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.HasKey("OrderId");
+
+                    b.HasIndex("CouponId");
 
                     b.ToTable("Orders");
                 });
@@ -836,6 +856,13 @@ namespace BuyGroceriesOnline.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("BuyGroceriesOnline.Models.Order", b =>
+                {
+                    b.HasOne("BuyGroceriesOnline.Models.Coupon", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("CouponId");
+                });
+
             modelBuilder.Entity("BuyGroceriesOnline.Models.OrderDetail", b =>
                 {
                     b.HasOne("BuyGroceriesOnline.Models.Order", "Order")
@@ -931,6 +958,11 @@ namespace BuyGroceriesOnline.Migrations
             modelBuilder.Entity("BuyGroceriesOnline.Models.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("BuyGroceriesOnline.Models.Coupon", b =>
+                {
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("BuyGroceriesOnline.Models.Order", b =>

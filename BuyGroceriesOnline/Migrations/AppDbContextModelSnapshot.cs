@@ -58,8 +58,8 @@ namespace BuyGroceriesOnline.Migrations
                         new
                         {
                             CategoryId = 3,
-                            CategoryName = "Medicines",
-                            Description = "Medicines can treat diseases and improve your health. If you are like most people, you need to take medicine at some point in your life. "
+                            CategoryName = "Cereals",
+                            Description = "We should eat fresh fruits to keep ourselves healthy. "
                         },
                         new
                         {
@@ -82,9 +82,29 @@ namespace BuyGroceriesOnline.Migrations
                         new
                         {
                             CategoryId = 7,
-                            CategoryName = "Beauty & Hygiene",
+                            CategoryName = "Beauty & Makeup",
                             Description = "These include vitamins A (beta-carotene), C and E, magnesium, zinc, phosphorous and folic acid."
                         });
+                });
+
+            modelBuilder.Entity("BuyGroceriesOnline.Models.Coupon", b =>
+                {
+                    b.Property<int>("CouponId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CouponId"), 1L, 1);
+
+                    b.Property<string>("CouponName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Discount")
+                        .HasColumnType("int");
+
+                    b.HasKey("CouponId");
+
+                    b.ToTable("Coupons");
                 });
 
             modelBuilder.Entity("BuyGroceriesOnline.Models.Feedback", b =>
@@ -161,6 +181,9 @@ namespace BuyGroceriesOnline.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int?>("CouponId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -198,6 +221,8 @@ namespace BuyGroceriesOnline.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.HasKey("OrderId");
+
+                    b.HasIndex("CouponId");
 
                     b.ToTable("Orders");
                 });
@@ -326,7 +351,7 @@ namespace BuyGroceriesOnline.Migrations
                         },
                         new
                         {
-                            ProductId = 2,
+                            ProductId = 11,
                             Brand = "Organic",
                             CategoryId = 2,
                             ImageThumbnailUrl = "https://rukminim1.flixcart.com/image/832/832/jtsz3bk0/vegetable/k/y/d/5-onion-un-branded-no-whole-original-imafdsyg4ykqcyt4.jpeg?q=70",
@@ -340,7 +365,77 @@ namespace BuyGroceriesOnline.Migrations
                         },
                         new
                         {
-                            ProductId = 3,
+                            ProductId = 12,
+                            Brand = "Organic",
+                            CategoryId = 2,
+                            ImageThumbnailUrl = "https://rukminim1.flixcart.com/image/832/832/jtsz3bk0/vegetable/b/8/4/2-potato-un-branded-no-whole-original-imafdsymh2aepaph.jpeg?q=70",
+                            ImageUrl = "https://rukminim1.flixcart.com/image/832/832/jtsz3bk0/vegetable/b/8/4/2-potato-un-branded-no-whole-original-imafdsymh2aepaph.jpeg?q=70",
+                            InStock = true,
+                            IsProductOfTheWeek = false,
+                            LongDescription = "These are a special variant early harvest of potatoes and are easily distinguishable with their thin/ tender skin which makes them easy-to-peel off even it can be used without peeling.  ",
+                            Name = "Fresh Potato (1 kg)",
+                            Price = 37m,
+                            ShortDescription = "If you are looking for soft, slightly sweet but creamy-textured potatoes. You're at right place!"
+                        },
+                        new
+                        {
+                            ProductId = 13,
+                            Brand = "Organic",
+                            CategoryId = 2,
+                            ImageThumbnailUrl = "https://rukminim1.flixcart.com/image/832/832/km9ht3k0/vegetable/y/o/3/cabbage-unbranded-whole-no-original-imagf7fpazpgzcwm.jpeg?q=70",
+                            ImageUrl = "https://rukminim1.flixcart.com/image/832/832/km9ht3k0/vegetable/y/o/3/cabbage-unbranded-whole-no-original-imagf7fpazpgzcwm.jpeg?q=70",
+                            InStock = true,
+                            IsProductOfTheWeek = false,
+                            LongDescription = "These are a special variant early harvest of potatoes and are easily distinguishable with their thin/ tender skin which makes them easy-to-peel off even it can be used without peeling.",
+                            Name = "Cabbage, 1 Units  (500 – 800gm)",
+                            Price = 26m,
+                            ShortDescription = "If you are looking for soft, slightly sweet but creamy-textured potatoes. You're at right place!"
+                        },
+                        new
+                        {
+                            ProductId = 15,
+                            Brand = "Organic",
+                            CategoryId = 2,
+                            ImageThumbnailUrl = "https://rukminim1.flixcart.com/image/832/832/kuczmvk0/vegetable/h/s/j/carrot-ooty-un-branded-no-whole-original-imag7hvnqty9v5gu.jpeg?q=70",
+                            ImageUrl = "https://rukminim1.flixcart.com/image/832/832/kuczmvk0/vegetable/h/s/j/carrot-ooty-un-branded-no-whole-original-imag7hvnqty9v5gu.jpeg?q=70",
+                            InStock = true,
+                            IsProductOfTheWeek = false,
+                            LongDescription = "Carrots are a great addition to soups and stews, appetizers and hors d'oeuvres, side dishes and salads. They can be roasted in the oven or boiled on the stove top. Try using carrots in place of potato slices in soup, for a lower-carbohydrate meal.",
+                            Name = "Carrot (500 g)",
+                            Price = 71m,
+                            ShortDescription = "If you are looking for soft, slightly sweet but creamy-textured potatoes. You're at right place!"
+                        },
+                        new
+                        {
+                            ProductId = 17,
+                            Brand = "Organic",
+                            CategoryId = 2,
+                            ImageThumbnailUrl = "https://rukminim1.flixcart.com/image/832/832/ked56kw0/vegetable/8/h/z/100-mint-leaves-un-branded-no-whole-original-imafv2ftybhf2erb.jpeg?q=70",
+                            ImageUrl = "https://rukminim1.flixcart.com/image/832/832/ked56kw0/vegetable/8/h/z/100-mint-leaves-un-branded-no-whole-original-imafv2ftybhf2erb.jpeg?q=70",
+                            InStock = true,
+                            IsProductOfTheWeek = false,
+                            LongDescription = "But we should not eat cut fruits at the market as they are very unhygienic and can make us ill. But we should not eat cut fruits at the market as they are very unhygienic and can make us ill. ",
+                            Name = "Mint Leaves (100 g)",
+                            Price = 19m,
+                            ShortDescription = "But we should not eat cut fruits at the market as they are very unhygienic and can make us ill. "
+                        },
+                        new
+                        {
+                            ProductId = 19,
+                            Brand = "Organic",
+                            CategoryId = 2,
+                            ImageThumbnailUrl = "https://rukminim1.flixcart.com/image/832/832/kc3p30w0/vegetable/t/m/x/250-beans-haricot-un-branded-whole-no-original-imaftauycjuhr4ay.jpeg?q=70",
+                            ImageUrl = "https://rukminim1.flixcart.com/image/832/832/kc3p30w0/vegetable/t/m/x/250-beans-haricot-un-branded-whole-no-original-imaftauycjuhr4ay.jpeg?q=70",
+                            InStock = true,
+                            IsProductOfTheWeek = false,
+                            LongDescription = "But we should not eat cut fruits at the market as they are very unhygienic and can make us ill. But we should not eat cut fruits at the market as they are very unhygienic and can make us ill. ",
+                            Name = "Beans Haricot (250 g)",
+                            Price = 22m,
+                            ShortDescription = "But we should not eat cut fruits at the market as they are very unhygienic and can make us ill. "
+                        },
+                        new
+                        {
+                            ProductId = 21,
                             Brand = "India Gate",
                             CategoryId = 3,
                             ImageThumbnailUrl = "https://rukminim1.flixcart.com/image/832/832/knqd3m80/rice/9/o/d/white-feast-rozzana-na-basmati-rice-pouch-india-gate-original-imag2c7wfzxrfwdy.jpeg?q=70",
@@ -354,9 +449,93 @@ namespace BuyGroceriesOnline.Migrations
                         },
                         new
                         {
-                            ProductId = 4,
+                            ProductId = 22,
+                            Brand = "Aashirvaad",
+                            CategoryId = 3,
+                            ImageThumbnailUrl = "https://m.media-amazon.com/images/I/81l7thl5AQL._SL1500_.jpg",
+                            ImageUrl = "https://m.media-amazon.com/images/I/81l7thl5AQL._SL1500_.jpg",
+                            InStock = true,
+                            IsProductOfTheWeek = false,
+                            LongDescription = "Made from the King of Wheat – Sharbati, Aashirvaad Select is a premium quality aata which is made with love in India. This sharbati wheat flour contains 100% Sharbati wheat from select regions of Madhya Pradesh. ",
+                            Name = "Aashirvaad Select Sharbatti Atta",
+                            Price = 85m,
+                            ShortDescription = "Aashirvaad Select is a premium quality atta made from the King of Wheat – Sharbati wheat grains"
+                        },
+                        new
+                        {
+                            ProductId = 23,
+                            Brand = "Aashirvaad",
+                            CategoryId = 3,
+                            ImageThumbnailUrl = "https://rukminim1.flixcart.com/image/832/832/l4hcx3k0/flour/0/l/1/-original-imagfd3gtdjrsxds.jpeg?q=70",
+                            ImageUrl = "https://rukminim1.flixcart.com/image/832/832/l4hcx3k0/flour/0/l/1/-original-imagfd3gtdjrsxds.jpeg?q=70",
+                            InStock = true,
+                            IsProductOfTheWeek = false,
+                            LongDescription = "",
+                            Name = "Aashirvaad Nature's Superfoods Multi Millet Mix  (500 g)",
+                            Price = 57m,
+                            ShortDescription = "If you are looking for soft, slightly sweet but creamy-textured potatoes. You're at right place!"
+                        },
+                        new
+                        {
+                            ProductId = 24,
+                            Brand = "Aashirvaad",
+                            CategoryId = 3,
+                            ImageThumbnailUrl = "https://rukminim1.flixcart.com/image/832/832/l26hdow0/flour/4/k/s/-original-imagdkghzc9yhdtv.jpeg?q=70",
+                            ImageUrl = "https://rukminim1.flixcart.com/image/832/832/l26hdow0/flour/4/k/s/-original-imagdkghzc9yhdtv.jpeg?q=70",
+                            InStock = true,
+                            IsProductOfTheWeek = false,
+                            LongDescription = "",
+                            Name = "Aashirvaad Natures Superfoods Ragi Flour  (1 kg)",
+                            Price = 90m,
+                            ShortDescription = "If you are looking for soft, slightly sweet but creamy-textured potatoes. You're at right place!"
+                        },
+                        new
+                        {
+                            ProductId = 25,
+                            Brand = "Aashirvaad",
+                            CategoryId = 3,
+                            ImageThumbnailUrl = "https://rukminim1.flixcart.com/image/832/832/ki96c280/flour/f/7/z/1-sugar-release-control-atta-1-whole-wheat-flour-aashirvaad-original-imafy2w5hjxwhrjy.jpeg?q=70",
+                            ImageUrl = "https://rukminim1.flixcart.com/image/832/832/ki96c280/flour/f/7/z/1-sugar-release-control-atta-1-whole-wheat-flour-aashirvaad-original-imafy2w5hjxwhrjy.jpeg?q=70",
+                            InStock = true,
+                            IsProductOfTheWeek = false,
+                            LongDescription = "",
+                            Name = "Aashirvaad Sugar Release Control Atta  (1 kg)",
+                            Price = 80m,
+                            ShortDescription = "If you are looking for soft, slightly sweet but creamy-textured potatoes. You're at right place!"
+                        },
+                        new
+                        {
+                            ProductId = 27,
+                            Brand = "Fortune",
+                            CategoryId = 3,
+                            ImageThumbnailUrl = "https://rukminim1.flixcart.com/image/832/832/kqidx8w0/flour/a/r/d/besan-besan-fortune-original-imag4gb46e9zwps8.jpeg?q=70",
+                            ImageUrl = "https://rukminim1.flixcart.com/image/832/832/kqidx8w0/flour/a/r/d/besan-besan-fortune-original-imag4gb46e9zwps8.jpeg?q=70",
+                            InStock = true,
+                            IsProductOfTheWeek = false,
+                            LongDescription = "But we should not eat cut fruits at the market as they are very unhygienic and can make us ill. But we should not eat cut fruits at the market as they are very unhygienic and can make us ill. ",
+                            Name = "Fortune Besan  (500 g)",
+                            Price = 55m,
+                            ShortDescription = "But we should not eat cut fruits at the market as they are very unhygienic and can make us ill. "
+                        },
+                        new
+                        {
+                            ProductId = 29,
+                            Brand = "",
+                            CategoryId = 3,
+                            ImageThumbnailUrl = "https://rukminim1.flixcart.com/image/832/832/ktx9si80/flour/c/t/e/roasted-sooji-soji-safe-harvest-original-imag762nfygx9sdc.jpeg?q=70",
+                            ImageUrl = "https://rukminim1.flixcart.com/image/832/832/ktx9si80/flour/c/t/e/roasted-sooji-soji-safe-harvest-original-imag762nfygx9sdc.jpeg?q=70",
+                            InStock = true,
+                            IsProductOfTheWeek = false,
+                            LongDescription = "Britannia Bourbon is made for the people who can’t get enough of chocolate, Britannia Bourbon is made for the people who can’t get enough of chocolate",
+                            Name = "Oiginal",
+                            Price = 8m,
+                            ShortDescription = "Britannia Bourbon is made for the people who can’t get enough of chocolate"
+                        },
+                        new
+                        {
+                            ProductId = 111,
                             Brand = "Britannia",
-                            CategoryId = 4,
+                            CategoryId = 3,
                             ImageThumbnailUrl = "https://m.media-amazon.com/images/I/81l7thl5AQL._SL1500_.jpg",
                             ImageUrl = "https://m.media-amazon.com/images/I/81l7thl5AQL._SL1500_.jpg",
                             InStock = true,
@@ -368,11 +547,25 @@ namespace BuyGroceriesOnline.Migrations
                         },
                         new
                         {
-                            ProductId = 5,
-                            Brand = "Coca-Cola ",
+                            ProductId = 112,
+                            Brand = "Haldirams",
+                            CategoryId = 3,
+                            ImageThumbnailUrl = "https://i.pinimg.com/736x/8b/64/45/8b6445a600bd18e708ee3c7d5ddb0353.jpg",
+                            ImageUrl = "https://cdn.shopify.com/s/files/1/0501/5361/9606/products/1_3980ed7e-002d-4b35-828b-77586be12f11_512x720.jpg?v=1657172703",
+                            InStock = true,
+                            IsProductOfTheWeek = false,
+                            LongDescription = "This classic snack is made with chickpea flour, potato and some spices. This is a popular Indian snack that is originated from Rajasthan. It is a great accompaniment to savoury snacks that adds texture to classic Indian snacks.",
+                            Name = "Aloo Bhujia Namkeen (150 g)",
+                            Price = 33m,
+                            ShortDescription = "Haldirams Aloo Bhujia is a authentic namkeen."
+                        },
+                        new
+                        {
+                            ProductId = 114,
+                            Brand = "Sprite",
                             CategoryId = 5,
-                            ImageThumbnailUrl = "https://rukminim1.flixcart.com/image/832/832/l3dcl8w0/aerated-drink/w/b/2/-original-imagegf8yccvrgvx.jpeg?q=70",
-                            ImageUrl = "https://rukminim1.flixcart.com/image/832/832/l3dcl8w0/aerated-drink/w/b/2/-original-imagegf8yccvrgvx.jpeg?q=70",
+                            ImageThumbnailUrl = "https://www.bigbasket.com/media/uploads/p/l/251006_11-sprite-soft-drink-lime-flavoured.jpg",
+                            ImageUrl = "https://www.bigbasket.com/media/uploads/p/l/251006_11-sprite-soft-drink-lime-flavoured.jpg",
                             InStock = true,
                             IsProductOfTheWeek = false,
                             LongDescription = "Refreshing people since 1999, Sprite is known for its straightforward attitude. The brand strongly believes in removing all the unnecessary Bakwaas from your life so that you can chill for real.",
@@ -382,31 +575,31 @@ namespace BuyGroceriesOnline.Migrations
                         },
                         new
                         {
-                            ProductId = 6,
-                            Brand = "Comfort",
-                            CategoryId = 6,
-                            ImageThumbnailUrl = "https://m.media-amazon.com/images/I/610h+cTerLL._AC_UL480_FMwebp_QL65_.jpg",
-                            ImageUrl = "https://m.media-amazon.com/images/I/610h+cTerLL._AC_UL480_FMwebp_QL65_.jpg",
+                            ProductId = 115,
+                            Brand = "Fanta",
+                            CategoryId = 5,
+                            ImageThumbnailUrl = "https://www.bigbasket.com/media/uploads/p/l/251019_8-fanta-soft-drink-orange-flavoured.jpg",
+                            ImageUrl = "https://www.bigbasket.com/media/uploads/p/l/251019_8-fanta-soft-drink-orange-flavoured.jpg",
                             InStock = true,
                             IsProductOfTheWeek = false,
-                            LongDescription = "A good fabric conditioner is an essential part of every household. After Wash Morning Fresh Fabric Conditioner helps to keep your clothes fresh and scented. It helps to retain the shape of the cloth and also provide long life for your outfit. The product is known to provide proper care and keep your clothes smelling amazing. Comfort is a brand name for fabric softener sold by Unilever in the UK and around the world. comfort is a small step after wash that coats each cloth fibre with a protective layer and prevents the damage caused by repeated washing. It gives a long lasting fragrance and is really easy to use. Convenient for both machine and hand wash. ",
-                            Name = "Comfort After Wash Morning Fresh Fabric Conditioner (860 ml)",
-                            Price = 235m,
-                            ShortDescription = "Comfort After Wash Morning Fresh Fabric Conditioner helps to keep your clothes fresh and scented. "
+                            LongDescription = "Life is always fun with colourful energy, vibes and FANTA by your side. Known for its vibrant colour, tempting taste and tingling bubbles, FANTA lets your spirit free, thus encouraging you to have fun in life.",
+                            Name = "Fanta Soft Drink",
+                            Price = 35m,
+                            ShortDescription = "Orange Flavoured, Refreshing, 750 ml Pet Bottle"
                         },
                         new
                         {
-                            ProductId = 7,
-                            Brand = "Maybelline New York",
-                            CategoryId = 7,
-                            ImageThumbnailUrl = "https://m.media-amazon.com/images/I/61sPnjCjFWL._AC_UL480_FMwebp_QL65_.jpg",
-                            ImageUrl = "https://m.media-amazon.com/images/I/61sPnjCjFWL._AC_UL480_FMwebp_QL65_.jpg",
+                            ProductId = 116,
+                            Brand = "Thums Up",
+                            CategoryId = 5,
+                            ImageThumbnailUrl = "https://www.bigbasket.com/media/uploads/p/l/288927_8-thums-up-soft-drink.jpg",
+                            ImageUrl = "https://www.bigbasket.com/media/uploads/p/l/288927_8-thums-up-soft-drink.jpg",
                             InStock = true,
                             IsProductOfTheWeek = false,
-                            LongDescription = ", Comes in the handy retractable stick which is easy to use and carry. Infused with SPF 20. Provides 8 - hour moisturisation. Helps to care and repair. How to Use Step 1: Apply your Maybelline lip balm by starting in the centre of your upper lip.Step 2: Work from the centre to the outer edges of your lip, following the contours of your mouth.Step 3: Then glide across the entire bottom lip.",
-                            Name = "Maybelline New York Baby Lips Lip Balm, 4 g Berry Crush",
-                            Price = 199m,
-                            ShortDescription = "Our moisturizing Baby Lips lip balm will heal and soothe dry or chapped lips. "
+                            LongDescription = "Thums Up is well-known for its strong, fizzy flavor and its secure, mature and distinctively masculine attitude. This brand obviously seeks to divide the men from the boys. A glass soft drink goes well with any variety of food and any type of mood.",
+                            Name = "Thums Up Soft Drink",
+                            Price = 40m,
+                            ShortDescription = "Carbonated Water, sugar, Acidity Regulator (338), Caffeine. Contains Permitted Natural Colour (150d) and Added Flavours (Natural, Nature - identical and Artificial Flavouring Substances)."
                         });
                 });
 
@@ -661,6 +854,13 @@ namespace BuyGroceriesOnline.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("BuyGroceriesOnline.Models.Order", b =>
+                {
+                    b.HasOne("BuyGroceriesOnline.Models.Coupon", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("CouponId");
+                });
+
             modelBuilder.Entity("BuyGroceriesOnline.Models.OrderDetail", b =>
                 {
                     b.HasOne("BuyGroceriesOnline.Models.Order", "Order")
@@ -756,6 +956,11 @@ namespace BuyGroceriesOnline.Migrations
             modelBuilder.Entity("BuyGroceriesOnline.Models.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("BuyGroceriesOnline.Models.Coupon", b =>
+                {
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("BuyGroceriesOnline.Models.Order", b =>

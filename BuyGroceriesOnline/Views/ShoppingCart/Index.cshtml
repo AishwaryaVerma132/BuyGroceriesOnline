@@ -3,6 +3,16 @@
 
 <h2>Your shopping cart</h2>
 <h4>Here are your Groceries in your shopping cart.</h4>
+@*
+@if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+    }*@
+
 
 <div class="container p-3">
     <div class="row pt-4">
@@ -13,6 +23,20 @@
             <a asp-controller="Order" asp-action="Checkout" class="btn btn-danger">
                 <i class="bi bi-credit-card-fill"></i> &nbsp;Place Order
             </a>
+
+            @if(Context.Session.GetString("manager")=="1")
+            {
+                <a asp-controller="Coupon" asp-action="ListCoupons" class="btn btn-Secondary">
+                    <i class="bi bi-credit-card-fill"></i> &nbsp; List Coupon
+                </a>
+            }
+
+            @if(Context.Session.GetString("manager")=="0" && (Model.ShoppingCartTotal!=0))
+            {
+                <a asp-controller="ShoppingCart" asp-action="ApplyCoupon" class="btn btn-Secondary">
+                    <i class="bi bi-credit-card-fill"></i> &nbsp; Apply Coupon
+                </a>
+            }
         </div>
     </div>
     <br />

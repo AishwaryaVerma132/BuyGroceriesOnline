@@ -12,11 +12,14 @@
             <th>
                 Name
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product.Name)
+             <th>
+                @Html.DisplayNameFor(model => model.Order.Email)
             </th>
-            <th>
+             <th>
                 @Html.DisplayNameFor(model => model.Product.ImageThumbnailUrl)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Product.Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
@@ -27,10 +30,11 @@
             <th>
                 Total
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Order.Email)
-            </th>
-            <th> Cancel </th>
+           @if(Context.Session.GetString("manager")=="0")
+            {
+                <th> Cancel </th>
+            }
+            
         </tr>
     </thead>
     <tbody>
@@ -40,11 +44,15 @@
                 @Html.DisplayFor(modelItem => item.Order.FirstName)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Order.Email)
+            </td>
+            <td width="15%" align="center">
+                <img src="@item.Product.ImageThumbnailUrl" class="rounded" width=50%>
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Product.Name)
             </td>
-            <td width="30%" align="center">
-                <img src="@item.Product.ImageThumbnailUrl" class="rounded" width=20%>
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
@@ -54,19 +62,19 @@
             <td>
                 @(item.Amount * item.Price)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Order.Email)
-            </td>
-            <td>
-                @if(Context.Session.GetString("manager")=="0")
-                {
-                    <p class="button">
-                        <a class="btn btn-danger" 
-                            asp-action="CancelOrder" asp-route-id="@item.OrderDetailId"> Cancel Order
-                        </a>
-                    </p>        
-                }
-            </td>
+            
+            
+             @if(Context.Session.GetString("manager")=="0")
+             {
+                 <td>
+                     <p class="button">
+                         <a class="btn btn-danger" 
+                             asp-action="CancelOrder" asp-route-id="@item.OrderDetailId"> Cancel Order
+                         </a>
+                     </p>    
+                 </td>
+             }
+            
         </tr>
 }
     </tbody>

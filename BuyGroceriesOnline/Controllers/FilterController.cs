@@ -15,29 +15,23 @@ namespace BuyGroceriesOnline.Controllers
         {
             return _productRepository.AllProduct;
         }
-
-        [Authorize]
         public ViewResult FilterPriceUp()
         {
             var product = GetAllProduct().OrderBy(p => p.Price);
             return View(product);
         }
 
-        [Authorize]
         public ViewResult FilterPriceDown()
         {
             var product = GetAllProduct().OrderByDescending(p => p.Price);
             return View(product);
         }
 
-        [Authorize]
         public ViewResult FilterStock()
         {
             var product = GetAllProduct().Where(p => p.InStock);
             return View(product);
         }
-
-        [Authorize]
         public ViewResult FilterBrand()
         {
             var product = GetAllProduct().OrderBy(p=>p.Brand);

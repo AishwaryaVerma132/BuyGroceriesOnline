@@ -8,7 +8,6 @@ using System.Collections.Generic;
 
 namespace BuyGroceriesOnline.Controllers
 {
-    [Authorize]
     public class ProductController : Controller
     {
         private readonly IProductRepository _productRepository;
@@ -38,7 +37,6 @@ namespace BuyGroceriesOnline.Controllers
                 var category = _categoryRepository.AllCategories.Where(c => c.CategoryId == id).FirstOrDefault();
                 customClass.CurrentCategory = category.CategoryName;
                 customClass.CategoryDescription = category.Description ;
-                //product.FirstOrDefault().Category.CategoryName;
             }
             else
             {
@@ -59,14 +57,21 @@ namespace BuyGroceriesOnline.Controllers
 
         public IActionResult SearchButton(string Name)
         {
-            if(String.IsNullOrEmpty(Name))
-            {
-                TempData["Message"] = "enter valid product name!";
-                return View();
-            }
             IEnumerable<Product> product = new List<Product>();
             product = _productRepository.AllProduct.Where(s => s.Name.ToUpper().Contains(Name.ToUpper()));
-            return View(product);
+
+            if (String.IsNullOrEmpty(Name))
+            {
+                TempData["error"] = "Enter Product Name!";
+                return RedirectToAction("List");
+            }
+            else if (product != null)
+            {
+                return View(product);
+                
+            }
+            TempData["error"] = "No such Product exists!";
+            return RedirectToAction("List");
         }
 
         public IActionResult ProductOfWeek()
@@ -74,7 +79,7 @@ namespace BuyGroceriesOnline.Controllers
             return View(_productRepository.ProductOfTheWeek);
         }
 
-
+        [Authorize]
         public IActionResult Details(int id)
         {
             return View(GetAllProduct().FirstOrDefault(p => p.ProductId == id));

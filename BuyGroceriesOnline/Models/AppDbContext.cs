@@ -13,7 +13,7 @@ namespace BuyGroceriesOnline.Models
         }
 
         public DbSet<Product> Products { get; set; }
-
+        public DbSet<Coupon> Coupons { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }

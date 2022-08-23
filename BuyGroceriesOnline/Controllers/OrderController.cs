@@ -1,9 +1,11 @@
 ﻿using BuyGroceriesOnline.Models;
 using BuyGroceriesOnline.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuyGroceriesOnline.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly IHttpContextAccessor _contextAccessor;
@@ -76,6 +78,7 @@ namespace BuyGroceriesOnline.Controllers
 
             if (selectedOrder != null)
             {
+                TempData["error"] = "Item Cancelled!";
                 _orderRepository.CancelOrder(selectedOrder);
             }
             return RedirectToAction("DisplayOrder");
