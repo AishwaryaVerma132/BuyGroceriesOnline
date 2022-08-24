@@ -3,7 +3,7 @@ namespace BuyGroceriesOnline.Models
 {
     public class MappingProfileMVC : Profile
     {
-        public MappingProfileMVC()//constuctor
+        public MappingProfileMVC()
         {
             this.CreateMap<Product, ProductMini>();
         }

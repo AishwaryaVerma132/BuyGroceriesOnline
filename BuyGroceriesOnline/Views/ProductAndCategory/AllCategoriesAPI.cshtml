@@ -4,7 +4,8 @@
     ViewData["Title"] = "AllCategoriesAPI";
 }
 
-<h1>Category List</h1>
+<br/>
+<h2>Category List</h2>
 
 @if(Context.Session.GetString("manager")=="1")
 {
@@ -13,7 +14,7 @@
             <i class="bi bi-folder-plus"></i> &nbsp;Create New</a>
     </p>
 }
-
+<hr/>
 <table class="table table-bordered table-striped" style="width:100%">
     <thead>
         <tr>

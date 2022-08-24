@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BuyGroceriesOnline</title>
     <link rel="stylesheet" href="~/css/bootswatch.css" />
-    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BuyGroceriesOnline.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
@@ -39,16 +38,14 @@
                                     <a class="nav-link " asp-area="" asp-controller="ShoppingCart" asp-action="Index"><i class="bi bi-cart3"></i> Cart @await Component.InvokeAsync("ShoppingCartSummary")</a>
                             </li>                        
                          </ul>
-                         <form class="d-flex" asp-controller="Product" asp-action="SearchButton" method="get">
-                              <input class="form-control me-sm-2" type="text" placeholder="Search" name="name">
+                         <form class="d-flex" style="width:700px !important;" asp-controller="Product" asp-action="SearchButton" method="get">
+                              <input class="form-control me-sm-2" type="text" placeholder="Search your product..." name="name">
                               <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                           </form>
 
-
-                    <div class="ms-auto">
-                               <partial name="_LoginPartial">
-                         </div>
-
+                        <div class="ms-auto">
+                            <partial name="_LoginPartial">
+                        </div>
                     </div>
              </div>
         </nav>
@@ -235,7 +232,6 @@
       <!-- Section: Links -->
     </div>
     <!-- Grid container -->
-
     <!-- Copyright -->
     <div
          class="text-center p-3"
@@ -248,7 +244,6 @@
   </footer>
   <!-- Footer -->
 <!-- End of .container -->
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

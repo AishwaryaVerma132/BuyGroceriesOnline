@@ -52,17 +52,15 @@ namespace BuyGroceriesOnline.Controllers
         public RedirectToActionResult AddToShoppingCart(int productId)
         {
             var selectedProduct = _productRepository.AllProduct.FirstOrDefault(p => p.ProductId == productId);
-            if (!(selectedProduct.InStock))
+            if (!selectedProduct.InStock)
             {
                 TempData["error"] = "Not in stock!";
-                /*return RedirectToAction("NotInStock");*/
             }else if (selectedProduct != null)
             {
                 TempData["success"] = "Item Added to Cart";
                 _shoppingCart.AddToCart(selectedProduct, 1);
             }
             return RedirectToAction("Index");
-            //return Redirect(Request.UrlReferrer.ToString());
         }
         public RedirectToActionResult RemoveFromShoppingCart(int productId)
         {

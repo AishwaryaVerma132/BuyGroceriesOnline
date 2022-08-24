@@ -22,16 +22,27 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IFeedbackRepository, FeedbackRepository>();
 builder.Services.AddScoped<ICouponRepository, CouponRepository>();
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly()); //for automapping
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
 builder.Services.AddAuthentication().AddFacebook(options =>
 {
     options.AppId = "442257214517899";
     options.AppSecret = "1c14cdf96bd5adb59cbe47dc7c270c81";
 });
+builder.Services.AddAuthentication().AddGoogle(options =>
+{
+    options.ClientId = "1014626721841-jbf72b5q80drfmtqrc1aluaqmf723l87.apps.googleusercontent.com";
+    options.ClientSecret = "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";
+});
+builder.Services.AddAuthentication().AddTwitter(options =>
+{
+    options.ConsumerKey = "VHp3ajZfeFRYa1JLRHdUMVVjWWE6MTpjaQ";
+    options.ConsumerSecret = "uOHGB_jIyTOIGVmP9B95OpPHAupBx3-bdh86x4XwvU2HXTotvo";
+
+});
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
-//Comment
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession();

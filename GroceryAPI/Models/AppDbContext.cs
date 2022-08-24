@@ -27,23 +27,6 @@ namespace GroceryAPI.Models
             modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 6, CategoryName = "Cleaning & Household", Description = "We should eat fresh fruits to keep ourselves healthy. But we should not eat cut fruits at the market as they are very unhygienic and can make us ill. " });
             modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 7, CategoryName = "Beauty & Makeup", Description = "These include vitamins A (beta-carotene), C and E, magnesium, zinc, phosphorous and folic acid." });
 
-            //seed products
-            /* modelBuilder.Entity<Product>().HasData(new Product
-            {
-                ProductId = ,
-                Name = "",
-                Price = ,
-                ShortDescription = "",
-                LongDescription =
-                "",
-                CategoryId = ,
-                ImageUrl = "",
-                InStock = true,
-                ImageThumbnailUrl = "",
-                Brand = "",
-            });
-             */
-
             modelBuilder.Entity<Product>().HasData(new Product
             {
                 ProductId = 1,

@@ -3,9 +3,9 @@
 @foreach (var category in Model)
 {
     <br />
-    <hr />
-    <h3 class="display-5" align= "center">@category.CategoryName</h3>
-    <hr />
+
+    <h1 align="center" style="background-color:#2C3E50; color:white; padding:5px; ">@category.CategoryName</h1>
+
     <br />
         <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach(var product in category.Products){

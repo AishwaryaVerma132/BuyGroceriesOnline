@@ -3,8 +3,9 @@
 @{
     ViewData["Title"] = "AllFeedback";
 }
-
+<br />
 <h1 align="center">All Feedbacks</h1>
+<br />
 
 <table class="table table-bordered table-striped" style="width:100%">
     <thead>
@@ -16,16 +17,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.LastName)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Country)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.FeedBack)
             </th>
-            <th>Feedback Operations</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -38,12 +33,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Country)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.FeedBack)
             </td>
@@ -58,9 +47,3 @@
     </tbody>
 </table>
 
-<div>
-    <p class="button">
-        <br />
-       <a class="btn btn-primary"  asp-controller="Order" asp-action="AllFeedback">Back to Feedbacks</a>
-    </p>
-</div>

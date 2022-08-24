@@ -50,7 +50,6 @@ namespace GroceryAPI.Controllers
             try
             {
                 var insertCategory = _categoryRepository.InsertCategory(category);
-                //return CreatedAtRoute("GetProduct", new { id = insertProduct.ProductId }, insertProduct);
                 return Ok(insertCategory);
             }
 

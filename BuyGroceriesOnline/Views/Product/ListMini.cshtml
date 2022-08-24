@@ -1,9 +1,7 @@
 ﻿@model IEnumerable<BuyGroceriesOnline.Models.ProductMini>
-
 @{
     ViewData["Title"] = "ListMini";
 }
-
 <br>
 <h2>Short Description</h2>
 
@@ -37,7 +35,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)

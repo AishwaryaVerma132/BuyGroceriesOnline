@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BuyGroceriesOnline.Models;
+using Microsoft.AspNetCore.Mvc;
 
-namespace BuyGroceriesOnline.Models
+namespace BuyGroceriesOnline.Controllers
 {
     public class CouponController : Controller
     {
@@ -18,12 +19,6 @@ namespace BuyGroceriesOnline.Models
         {
             return View(GetAllCoupon());
         }
-
-
-
-
-
-
 
         public ViewResult Create()
         {

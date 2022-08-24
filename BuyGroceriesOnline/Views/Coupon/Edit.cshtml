@@ -3,10 +3,8 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
-<h1>Edit</h1>
-
-<h4>Coupon</h4>
+<br/>
+<h2>Edit Coupon</h2>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -23,14 +21,16 @@
                 <input asp-for="Discount" class="form-control" />
                 <span asp-validation-for="Discount" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-success" />
             </div>
+            <br />
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="ListCoupon">Back to List</a>
+    <a asp-action="ListCoupons" class="btn btn-primary">Back to List</a>
 </div>
 

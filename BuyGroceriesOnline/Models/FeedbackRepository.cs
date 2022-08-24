@@ -15,7 +15,6 @@
             var entry = appDbContext.Feedbacks.Remove(feedback);
             appDbContext.SaveChanges();
             return entry.Entity;
-            //throw new NotImplementedException();
         }
 
         public Feedback FeedbackDetails(int feedbackId)

@@ -11,7 +11,6 @@ namespace BuyGroceriesOnline.Controllers
         private readonly ICategoryRepository _categoryRepository;
         private readonly IConfiguration configuration;
         string baseAddress;
-        //string categoryBaseAddress;
 
         public ProductAndCategoryController(IProductRepository productRepository, IConfiguration configuration, ICategoryRepository categoryRepository)
         {
@@ -19,7 +18,6 @@ namespace BuyGroceriesOnline.Controllers
             this.configuration = configuration;
             this.baseAddress = configuration.GetValue<string>("BaseAddress");
             _categoryRepository = categoryRepository;
-            //this.categoryBaseAddress = configuration.GetValue<string>("CategoryBaseAddres");
         }
 
         private IEnumerable<Product> GetAllProducts()
@@ -38,7 +36,6 @@ namespace BuyGroceriesOnline.Controllers
                 var category = _categoryRepository.AllCategories.Where(c => c.CategoryId == id).FirstOrDefault();
                 customClass.CurrentCategory = category.CategoryName;
                 customClass.CategoryDescription = category.Description;
-                //product.FirstOrDefault().Category.CategoryName;
             }
             else
             {

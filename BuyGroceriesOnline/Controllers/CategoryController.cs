@@ -19,9 +19,6 @@ namespace BuyGroceriesOnline.Controllers
             return View(AllCategories());
         }
 
-        // CRUD Operations
-
-
         public ViewResult Create()
         {
             return View();

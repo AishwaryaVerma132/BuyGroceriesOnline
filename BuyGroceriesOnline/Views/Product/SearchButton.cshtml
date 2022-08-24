@@ -3,7 +3,8 @@
 <br/>
 <br/>
 <h1>Search Results...</h1>
-
+<br/>
+<br/>
 @if (TempData["Message"] != null)
 {
     <div>
@@ -20,38 +21,40 @@
 }
 else
 {
-   <div class="row row-cols-1 row-cols-md-3 g-4">
+    
+<div class="row row-cols-1 row-cols-md-3 g-4">
 @foreach (var product in Model)
 {
     <div class="col">
-    <div class="card" style="width: 22rem; padding:20px;">
-        <div class="thumbnail">
-            <img src="@product.ImageThumbnailUrl" alt="" class="card-img-top embed-responsive-item">
-            <div class="caption">
-                <h3 class="pull-right">Price: Rs.@product.Price</h3>
-                <h3 class="card-title">
-                   <a asp-controller="Product" asp-action="Details" asp-route-id="@product.ProductId" >@product.Name</a>
-                </h3>
-                <h6 class="card-text">Product Info: @product.ShortDescription</h6>
-                <h6 class="card-text">Brand: @product.Brand</h6>
+        <div class="card" style="width: 22rem; padding:20px;">
+            <div class="thumbnail">
+                <img src="@product.ImageThumbnailUrl" alt="" class="card-img-top embed-responsive-item">
+                <div class="caption">
+                    <h3 class="pull-right">Price: Rs.@product.Price</h3>
+                    <h3 class="card-title">
+                       <a asp-controller="Product" asp-action="Details" asp-route-id="@product.ProductId" >@product.Name</a>
+                    </h3>
+                    <h6 class="card-text">Product Info: @product.ShortDescription</h6>
+                    <h6 class="card-text">Brand: @product.Brand</h6>
+                    <h6 class="card-text">Category: @product.Category.CategoryName</h6>
+                </div>
+                <br>
+                @if(Context.Session.GetString("manager")=="0")
+                {
+                     <div class="addToCart">
+                        <p class="button">
+                            <a class="btn btn-danger" 
+                               asp-controller="ShoppingCart" 
+                               asp-action="AddToShoppingCart"
+                               asp-route-productId="@product.ProductId">Add To Cart</a>
+                        </p>
+                     </div>
+                }
             </div>
-            <br>
-            @if(Context.Session.GetString("manager")=="0")
-            {
-                 <div class="addToCart">
-                    <p class="button">
-                        <a class="btn btn-danger" 
-                           asp-controller="ShoppingCart" 
-                           asp-action="AddToShoppingCart"
-                           asp-route-productId="@product.ProductId">Add to cart</a>
-                    </p>
-                 </div>
-            }
         </div>
-    </div>
     </div>
     <br />
 }
-</div> 
+</div>
 }
 

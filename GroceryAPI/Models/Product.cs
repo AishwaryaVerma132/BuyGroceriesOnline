@@ -6,7 +6,6 @@ namespace GroceryAPI.Models
 {
     public class Product
     {
-
         public int ProductId { get; set; }
 
         [Display(Name = "Product Name")]

@@ -7,22 +7,22 @@ namespace BuyGroceriesOnline.Components
 {
     public class ShoppingCartSummary : ViewComponent
     {
-        private readonly ShoppingCart _shoppingCart;//declaring object
+        private readonly ShoppingCart _shoppingCart;
 
-        public ShoppingCartSummary(ShoppingCart shoppingCart)//constructor will take care of creating object
+        public ShoppingCartSummary(ShoppingCart shoppingCart)
         {
-            _shoppingCart = shoppingCart; //shopping cart object
+            _shoppingCart = shoppingCart;
         }
 
-        public IViewComponentResult Invoke() //action method for component
+        public IViewComponentResult Invoke()
         {
             var items = _shoppingCart.GetShoppingCartItems();
             _shoppingCart.ShoppingCartItems = items;
 
-            var shoppingCartViewModel = new ShoppingCartViewModel //creating view model
+            var shoppingCartViewModel = new ShoppingCartViewModel
             {
-                ShoppingCart = _shoppingCart, //property- sending entire shopping cart
-                ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal() //total shopping cart items
+                ShoppingCart = _shoppingCart, 
+                ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal() 
             };
 
             return View(shoppingCartViewModel);

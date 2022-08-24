@@ -70,7 +70,6 @@ namespace GroceryAPI.Controllers
             try
             {
                 var insertProduct = _productRepository.InsertProduct(product);
-                //return CreatedAtRoute("GetProduct", new { id = insertProduct.ProductId }, insertProduct);
                 return Ok(insertProduct);
             }
 

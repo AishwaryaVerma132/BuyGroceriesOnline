@@ -14,11 +14,13 @@ namespace BuyGroceriesOnline.Models
 
         [Required(ErrorMessage = "Please enter your first name")]
         [Display(Name = "First name")]
+        [RegularExpression(@"^[a-zA-Z\s]{1,15}$", ErrorMessage = "Please Enter Valid First Name.")]
         [StringLength(50)]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Please enter your last name")]
         [Display(Name = "Last name")]
+        [RegularExpression(@"^[a-zA-Z\s]{1,15}$", ErrorMessage = "Please Enter Valid Last Name.")]
         [StringLength(50)]
         public string LastName { get; set; }
 
@@ -37,16 +39,20 @@ namespace BuyGroceriesOnline.Models
 
         [Required(ErrorMessage = "Please enter your city")]
         [StringLength(50)]
+        [RegularExpression(@"^[a-zA-Z\s]{1,50}$", ErrorMessage = "Please Enter Valid City Name.")]
         public string City { get; set; }
         [StringLength(20)]
+
+        [RegularExpression(@"^[a-zA-Z\s]{1,20}$", ErrorMessage = "Please Enter Valid State Name.")]
         public string State { get; set; }
 
         [Required(ErrorMessage = "Please enter your country")]
         [StringLength(50)]
+        [RegularExpression(@"^[a-zA-Z\s]{1,50}$", ErrorMessage = "Please Enter Valid Country Name.")]
         public string Country { get; set; }
 
         [Required(ErrorMessage = "Please enter your phone number")]
-        [StringLength(25)]
+        [StringLength(10, MinimumLength = 10)]
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "Phone number")]
         public string PhoneNumber { get; set; }

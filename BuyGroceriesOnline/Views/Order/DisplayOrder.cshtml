@@ -37,8 +37,9 @@
             
         </tr>
     </thead>
+
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Order.FirstName)
@@ -51,8 +52,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Product.Name)
-            </td>
-            
+            </td> 
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
@@ -62,8 +62,7 @@
             <td>
                 @(item.Amount * item.Price)
             </td>
-            
-            
+           
              @if(Context.Session.GetString("manager")=="0")
              {
                  <td>
@@ -73,8 +72,7 @@
                          </a>
                      </p>    
                  </td>
-             }
-            
+             } 
         </tr>
 }
     </tbody>

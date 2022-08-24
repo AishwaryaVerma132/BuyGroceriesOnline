@@ -84,7 +84,6 @@ namespace BuyGroceriesOnline.Controllers
             return RedirectToAction("DisplayOrder");
 
         }
-
         public ViewResult FeedBack()
         {
             return View();

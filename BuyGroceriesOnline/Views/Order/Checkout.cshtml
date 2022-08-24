@@ -1,8 +1,10 @@
 ﻿@model Order
 
+<br/>
+
 <form asp-action="Checkout" method="post" class="form-horizontal" role="form">
     <h4>You're just one step away from your products.</h4>
-
+    <hr/>
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="form-group">
@@ -84,17 +86,18 @@
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
     </div>
+    <br/>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-5">
-            <input type="submit" class="btn btn-primary" value="Complete order" />
+            <input type="submit" class="btn btn-success" value="Complete Order" />
         </div>
     </div>
     <br />
     <div>
         <p class="button">
           <a class="btn btn-primary" 
-            asp-controller="ShoppingCart" asp-action="AddToShoppingCart"> Back To Shopping Cart
+            asp-controller="ShoppingCart" asp-action="AddToShoppingCart"> Back
           </a>
         </p>
     </div>

@@ -41,7 +41,7 @@ namespace BuyGroceriesOnline.Controllers
             else
             {
                 product = GetAllProduct();
-                customClass.CurrentCategory = "List Of Products";
+                customClass.CurrentCategory = "All Products";
                 customClass.CategoryDescription = "";
             }
 

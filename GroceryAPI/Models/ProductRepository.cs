@@ -11,8 +11,6 @@ namespace GroceryAPI.Models
         }
 
         public IEnumerable<Product> AllProduct => _appDbContext.Products;
-            //.Include(c => c.Category);
-
         public IEnumerable<Product> ProductOfTheWeek => _appDbContext.Products.Where(product => product.IsProductOfTheWeek);
 
         public Product GetProductById(int productId)

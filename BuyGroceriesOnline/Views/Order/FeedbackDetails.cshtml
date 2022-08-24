@@ -3,12 +3,10 @@
 @{
     ViewData["Title"] = "FeedbackDetails";
 }
-
+<br />
 <h1>Feedback Details</h1>
-
+<hr />
 <div>
-    <h4>Feedback</h4>
-    <hr />
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.FirstName)
@@ -55,9 +53,8 @@
     </dl>
 </div>
 <div>
-    @*<a asp-action="FeedbackDetails" asp-route-id="@Model?.FeedbackId">View Feedback Details</a> |*@
     <p class="button">
         <br />
-       <a class="btn btn-primary"  asp-controller="Product" asp-action="List">Back to All Products</a>
+       <a class="btn btn-primary"  asp-controller="Order" asp-action="AllFeedback">Back</a>
     </p>
 </div>

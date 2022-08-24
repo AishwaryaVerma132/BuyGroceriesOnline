@@ -44,10 +44,9 @@ namespace BuyGroceriesOnline.Models
             var shoppingCartItem =
                     _appDbContext.ShoppingCartItems.SingleOrDefault(
                         s => s.Product.ProductId == product.ProductId && s.ShoppingCartId == ShoppingCartId);
-            //if it is the first time they are adding apple pie, then shoppingCartItem should be null
+            
             if (shoppingCartItem == null)
             {
-                //shoppingcartitem object and add it to customer bag
                 shoppingCartItem = new ShoppingCartItem
                 {
                     ShoppingCartId = ShoppingCartId,
@@ -74,7 +73,6 @@ namespace BuyGroceriesOnline.Models
 
             if (shoppingCartItem != null)
             {
-                //if they have more than 1 apple pie, you should reduce the count
                 if (shoppingCartItem.Amount > 1)
                 {
                     shoppingCartItem.Amount--;

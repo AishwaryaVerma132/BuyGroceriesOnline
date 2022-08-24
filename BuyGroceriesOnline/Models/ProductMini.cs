@@ -16,8 +16,5 @@ namespace BuyGroceriesOnline.Models
         [Display(Name = "Take A look")]
         public string ImageThumbnailUrl { get; set; }
 
-        /*[Display(Name = "Category Id")]
-        public int CategoryId { get; set; }
-        public Category Category { get; set; }*/
     }
 }

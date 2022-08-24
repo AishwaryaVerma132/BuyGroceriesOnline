@@ -3,16 +3,6 @@
 
 <h2>Your shopping cart</h2>
 <h4>Here are your Groceries in your shopping cart.</h4>
-@*
-@if (ViewBag.Message != null)
-    {
-        <script type="text/javascript">
-            window.onload = function () {
-                alert("@ViewBag.Message");
-            };
-        </script>
-    }*@
-
 
 <div class="container p-3">
     <div class="row pt-4">
@@ -55,7 +45,6 @@
     @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
     {
         <tr>
-            @*<td class="text-center">@line.Amount</td>*@
             <td align="center">
             <a asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-productId="@line.Product.ProductId"
             class="btn btn-danger mx-2">-</a>  @line.Amount  
@@ -94,6 +83,5 @@
          asp-action="List">Back to All Products
       </a>
    </p>
- </div>
         
 
